@@ -1,6 +1,6 @@
 import AboutComponent from './pages/About';
 import AppointmentComponent from './pages/Appointments';
-import Footer from './pages/Footer';
+import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
 import HomeContainer from './pages/Home';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

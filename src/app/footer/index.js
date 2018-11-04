@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import { rgba } from 'polished';
 
-import { Row, Column } from '../../AppStyles';
+import { Row, Column } from '../AppStyles';
 
 const FooterWrapper = styled(Row)`
   height: 120px;
