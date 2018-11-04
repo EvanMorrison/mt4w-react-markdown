@@ -1,8 +1,8 @@
+import content from '../../../content/appointments.md';
 import EmailForm from './EmailForm';
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import ReactMarkdown from 'react-markdown';
 import { Section, SectionTitle, SectionBody, Paragraph } from '../../AppStyles';
-import { withTheme } from 'emotion-theming';
 
 class AppointmentComponent extends React.Component {
   state = {
@@ -54,23 +54,11 @@ class AppointmentComponent extends React.Component {
 
   render() {
     return(
-      <Section topcolor={this.props.theme.logoOrange}>
+      <Section topcolor="logoOrange">
         <SectionTitle>Appointments</SectionTitle>
         <SectionBody>
           <Paragraph>
-            Appointments are available seven days a week. Please contact us to schedule an appointment or to learn more:
-          </Paragraph>
-          <Paragraph>
-            Call or Text: 310-283-9382
-          </Paragraph>
-          <Paragraph>
-            - or -
-          </Paragraph>
-          <Paragraph>
-            Email: <a href="mailto:trish@mt4w.com">trish@mt4w.com</a>
-          </Paragraph>
-          <Paragraph>
-            - or -
+            <ReactMarkdown source={content} escapeHtml={false}/>
           </Paragraph>
           {
             this.state.emailStatus === 'success'
@@ -101,8 +89,4 @@ class AppointmentComponent extends React.Component {
   }
 }
 
-AppointmentComponent.propTypes = {
-  theme: PropTypes.object,
-};
-
-export default withTheme(AppointmentComponent);
+export default AppointmentComponent;

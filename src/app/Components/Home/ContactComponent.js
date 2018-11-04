@@ -1,4 +1,4 @@
-import appdata from '../../../data/appState';
+import appdata from '../../../content/appState';
 import React from 'react';
 import styled from 'react-emotion';
 import { Row, Column } from '../../AppStyles';

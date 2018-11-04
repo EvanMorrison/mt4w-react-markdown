@@ -73,7 +73,7 @@ class EmailForm extends Component {
 
 EmailForm.propTypes = {
   onSubmit: PropTypes.func,
-  message: PropTypes.string,
+  message: PropTypes.object,
   handleInput: PropTypes.func,
   sending: PropTypes.bool
 };

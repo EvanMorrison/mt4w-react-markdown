@@ -46,8 +46,8 @@ export const Section = styled(Column)`
   margin: 0 auto;
   padding: 50px 10%;
   border-radius: 100% 0 100% 0/ 100px 0 200px 0;
-  ${props => props.topcolor && `border-top: 8px solid ${props.topcolor}`};
-  ${props => props.bottomcolor && `border-bottom: 12px solid ${props.bottomcolor}`};
+  ${props => props.topcolor && `border-top: 8px solid ${props.theme[props.topcolor]}`};
+  ${props => props.bottomcolor && `border-bottom: 12px solid ${props.theme[props.bottomcolor]}`};
 `;
 
 export const SectionTitle = styled.h1`
@@ -102,16 +102,19 @@ export const SectionBody = styled.div`
   margin-bottom: 100px;
 `;
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.div`
   font-family: ${props => props.theme.textFont};
   font-size: 1.15em;
   font-weight: 300;
   line-height: 1.5em;
   max-width: 38em;
   text-align: justify;
-  margin-top: 2em;
 
-  &:first-of-type {
-    margin-top: 0;
+  p {
+    margin-top: 2em;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
 `;

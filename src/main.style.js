@@ -33,9 +33,7 @@ injectGlobal`
   @font-face {
     font-family: 'mt4w-icons';
     src:
-      url('assets/fonts/mt4w-icons.ttf?3eo3lh') format('truetype'),
-      url('assets/fonts/mt4w-icons.woff?3eo3lh') format('woff'),
-      url('assets/fonts/mt4w-icons.svg?3eo3lh#mt4w-icons') format('svg');
+      url('/assets/fonts/mt4w-icons.svg') format('svg');
     font-weight: normal;
     font-style: normal;
   }
@@ -108,7 +106,7 @@ injectGlobal`
     content: "\e0cd";
   }
   .icon-call_split:before {
-    content: "\e0b6";
+    content: "call_split";
   }
   .icon-check:before {
     content: "\e5ca";

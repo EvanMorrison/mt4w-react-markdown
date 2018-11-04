@@ -4,12 +4,9 @@ import MyofascialComponent from './MyofascialComponent';
 import React from 'react';
 import ServicesComponent from './ServicesComponent';
 import styled from 'react-emotion';
-import { PropTypes } from 'prop-types';
 import { Route, NavLink } from 'react-router-dom';
 import { Section } from '../../AppStyles';
-import { withTheme } from 'emotion-theming';
-
-import appState from '../../../data/appState';
+import appState from '../../../content/appState';
 
 const StyledList = styled.ul`
   list-style: none;
@@ -34,7 +31,7 @@ class ServicesContainer extends React.Component {
   render() {
     const props = appState.homePage.heroPanels;
     return(
-      <Section topcolor={this.props.theme.logoBlue}>
+      <Section topcolor="logoBlue">
         <nav>
           <StyledList>
             <li><NavLink to="/services/massage">Massage | </NavLink></li>
@@ -51,8 +48,4 @@ class ServicesContainer extends React.Component {
   }
 }
 
-ServicesContainer.propTypes = {
-  theme: PropTypes.object,
-};
-
-export default withTheme(ServicesContainer);
+export default ServicesContainer;

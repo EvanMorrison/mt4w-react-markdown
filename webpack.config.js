@@ -12,6 +12,8 @@ const isPerformance = process.env.NODE_ENV === "performance";
 module.exports = {
   mode: isProduction ? "production" : "development",
 
+  context: path.resolve(__dirname, "src"),
+
   devServer: (() => {
     if(isProduction) return {};
     return {
@@ -25,7 +27,7 @@ module.exports = {
   devtool: isProduction ? "hidden-source-map" : "cheap-eval-source-map",
 
   entry: {
-    app: "./src/index.js"
+    app: "./index.js"
   },
 
   output: {
@@ -84,8 +86,13 @@ module.exports = {
         use: [{
           loader: "file-loader",
           options: {
-            name: "/[path][name].[ext]"
+            name: "[path][name].[ext]"
           }
+        }]
+      }, {
+        test: /\.md$/,
+        use: [{
+          loader: "raw-loader"
         }]
       }
     ]
@@ -97,7 +104,7 @@ module.exports = {
         template: path.resolve(__dirname, "src/index.html"),
         cdnModule: "deps",
         filename: "index.html",
-        title: "React Starter",
+        title: "Massage, Manual Lymphatic Drainage, Myofascial Release | Lymphatic Massage | Manual Therapy for Wellness | MT4W",
         inject: "body"
       }),
       new WebpackCdnPlugin({

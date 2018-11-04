@@ -1,4 +1,4 @@
-import appState from '../../../data/appState';
+import appState from '../../../content/appState';
 import hero from '../../../assets/images/background-1998454_980.jpg';
 import PanelComponent from './PanelComponent';
 import React from 'react';
