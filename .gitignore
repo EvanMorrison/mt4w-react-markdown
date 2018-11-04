@@ -1,2 +1,10 @@
 node_modules
 dist
+
+# assets
+misc
+unused
+
+# misc
+.DS_Store
+.vscode
