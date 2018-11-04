@@ -1,2 +1,3 @@
-# react-emotion-starter
-Project starter with React 16.6, Emotion 9, &amp; Webpack 4
+# MT4W - Manual Therapy For Wellness
+
+A website built with React, emotion, & webpack.
