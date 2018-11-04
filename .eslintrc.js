@@ -16,10 +16,10 @@ module.exports = {
       "react"
   ],
   "rules": {
+    "comma-dangle": "off",
     "keyword-spacing": ["error", {"before": true, "after": false, "overrides": {"else": {"after": true}, "from": {"after": true}, "import": {"after": true}, "case": {"after": true}}}],
     "no-template-curly-in-string": "off",
     "object-curly-spacing": "off",
-    "quotes": ["error", "double"],
     "react/jsx-uses-vars": [2],
     "semi": ["error", "always"],
     "space-before-function-paren": ["error", "never"],

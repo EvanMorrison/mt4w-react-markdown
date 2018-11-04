@@ -1,38 +1,57 @@
-import Clock from "./clock";
-import ClockBtn from "./clockBtn";
-import React, { Component } from "react";
-import { css } from "emotion";
-import { hot } from "react-hot-loader";
+import AboutComponent from './Components/About';
+import AppointmentComponent from './Components/Appointments';
+import Footer from './Components/Footer';
+import HeadingComponent from './Components/SiteHeading/HeadingComponent';
+import HomeContainer from './Components/Home';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Navbar from './Components/Navbar';
+import React, { Component } from 'react';
+import ServicesContainer from './Components/Services';
+import {theme} from './AppStyles';
+import { ThemeProvider } from 'emotion-theming';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
+import '../main.style';
 
 class App extends Component {
   state = {
-    active: false
+    // a value from 0 to 1 representing proportion of window scroll until
+    // the navbar styling changes
+    scrollPosition: 0,
   }
 
-  handleClick = () => {
-    this.setState({active: !this.state.active});
+  componentDidMount = () => {
+    let startTransition = 50; // amount of pixels to scroll before the navbar styling changes
+    window.addEventListener('scroll', evt => {
+      let position = window.scrollY;
+      if(position < startTransition) {
+        this.setState({scrollPosition: position / startTransition});
+      } else if(position >= startTransition && this.state.scrollPosition < 1) {
+        this.setState({scrollPosition: 1});
+      }
+    });
   }
 
   render() {
     return(
-      <div className={css`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-family: Roboto, "Helvetica Neue", sans-serif;
-        font-weight: 300;
-      `}>
-        <h1 className={css`
-            color: #11CCCC;
-            font-weight: 300;
-            background-color: #111111;
-            padding: 6px 18px;
-            border-radius: 3px;
-          `}>
-          REACT APP STARTER</h1>
-        <Clock active={this.state.active}/>
-        <ClockBtn active={this.state.active} onClick={this.handleClick}/>
-      </div>
+      <BrowserRouter>
+        <MuiThemeProvider >
+          <ThemeProvider theme={theme}>
+            <div>
+              <HeadingComponent position={this.state.scrollPosition} />
+              <Navbar position={this.state.scrollPosition} />
+              <Switch>
+                <Route exact path="/" component={HomeContainer} />
+                <Route path="/services" component={ServicesContainer} />
+                <Route path="/about" component={AboutComponent} />
+                <Route path="/appointments" component={AppointmentComponent} />
+                <Redirect to="/" component={HomeContainer} />
+              </Switch>
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </MuiThemeProvider>
+      </BrowserRouter>
     );
   }
 }
