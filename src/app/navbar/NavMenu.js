@@ -31,8 +31,7 @@ const NavList = styled.ul`
       }
     }
 
-    ${''/* show top-level menu icons only on mobile */}
-
+    /* show top-level menu icons only on mobile */
     [class^='icon-'] {
       display: ${props => props.isMobile ? 'inline-block' : 'none'};
       color: ${props => props.theme.primaryText} !important;
