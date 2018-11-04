@@ -1,11 +1,11 @@
 import DesktopNavComponent from './DesktopNavComponent';
-import logo from '../../../assets/logo_sm.png';
+import logo from '../../assets/logo_sm.png';
 import MobileNavComponent from './MobileNavComponent';
 import React from 'react';
 import styled from 'react-emotion';
 import { PropTypes } from 'prop-types';
 import { rgba } from 'polished';
-import { Row, Column } from '../../AppStyles';
+import { Row, Column } from '../AppStyles';
 
 const CustomNavbar = styled(Row)`
   @media (min-width: 426px) {

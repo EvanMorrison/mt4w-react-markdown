@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import { Row } from '../../AppStyles';
+import { Row } from '../AppStyles';
 import NavMenu from './NavMenu';
 import styled from 'react-emotion';
 

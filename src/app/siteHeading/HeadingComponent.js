@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { PropTypes } from 'prop-types';
-import { Column } from '../../AppStyles';
+import { Column } from '../AppStyles';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const StyledWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const logo = require('../../../assets/logo_sm.png');
+const logo = require('../../assets/logo_sm.png');
 
 const Brand = styled.div`
   position: fixed;

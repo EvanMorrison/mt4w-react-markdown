@@ -1,18 +1,18 @@
-import AboutComponent from './Components/About';
-import AppointmentComponent from './Components/Appointments';
-import Footer from './Components/Footer';
-import HeadingComponent from './Components/SiteHeading/HeadingComponent';
-import HomeContainer from './Components/Home';
+import AboutComponent from './pages/About';
+import AppointmentComponent from './pages/Appointments';
+import Footer from './pages/Footer';
+import HeadingComponent from './siteHeading/HeadingComponent';
+import HomeContainer from './pages/Home';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Navbar from './Components/Navbar';
+import Navbar from './navbar';
 import React, { Component } from 'react';
-import ServicesContainer from './Components/Services';
+import ServicesContainer from './pages/Services';
 import {theme} from './AppStyles';
 import { ThemeProvider } from 'emotion-theming';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
+import '../assets/fonts/mt4w-icons.svg';
 import '../main.style';
-
 class App extends Component {
   state = {
     // a value from 0 to 1 representing proportion of window scroll until

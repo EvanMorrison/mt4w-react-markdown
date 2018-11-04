@@ -1,11 +1,10 @@
 import Drawer from 'material-ui/Drawer';
-import IconButton from 'material-ui/IconButton';
-import logo from '../../../assets/logo_sm.png';
+import logo from '../../assets/logo_sm.png';
 import NavMenu from './NavMenu';
 import React, { Component } from 'react';
 import styled from 'react-emotion';
 import { rgba } from 'polished';
-import { Row } from '../../AppStyles';
+import { Row } from '../AppStyles';
 import { PropTypes } from 'prop-types';
 
 const Navbutton = styled(Row)`
@@ -43,10 +42,11 @@ class MobileNavComponent extends Component {
   render() {
     return(
       <Navbutton position={this.props.position} >
-        <IconButton iconClassName="icon-menu"
-          styles={{color: 'inherit'}}
+        <i className="icon-menu"
+          css={{color: 'inherit'}}
           onClick={this.toggleDrawer}>
-        </IconButton>
+          menu
+        </i>
 
         <Drawer open={this.state.isDrawerOpen}
           docked={false}

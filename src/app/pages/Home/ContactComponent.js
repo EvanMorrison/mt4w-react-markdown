@@ -81,9 +81,9 @@ const ContactComponent = () => (
       <Headline>
         <table>
           <tbody>
-            <tr><td><i className="icon-phone"></i></td><td css={{paddingLeft: '12px'}}>310-283-9382</td></tr>
-            <tr><td><i className="icon-mail_outline"></i></td><td css={{paddingLeft: '12px'}}><a href="mailto:trish@mt4w.com">trish@mt4w.com</a></td></tr>
-            <tr><td><i className="icon-pin_drop"></i></td><td css={{paddingLeft: '12px'}}>9815 East Bell Road, Suite 110</td></tr>
+            <tr><td><i className="icon-phone">phone</i></td><td css={{paddingLeft: '12px'}}>310-283-9382</td></tr>
+            <tr><td><i className="icon-mail_outline">mail_outline</i></td><td css={{paddingLeft: '12px'}}><a href="mailto:trish@mt4w.com">trish@mt4w.com</a></td></tr>
+            <tr><td><i className="icon-pin_drop">pin_drop</i></td><td css={{paddingLeft: '12px'}}>9815 East Bell Road, Suite 110</td></tr>
             <tr><td><i></i></td><td css={{paddingLeft: '12px'}}>Scottsdale, AZ 85260</td></tr>
           </tbody>
         </table>

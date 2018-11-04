@@ -4,6 +4,7 @@ import NavEntries from './NavMenuData';
 import Popover from 'material-ui/Popover';
 import React from 'react';
 import styled from 'react-emotion';
+import { css, cx } from 'emotion';
 import { PropTypes } from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { rgba } from 'polished';
@@ -52,19 +53,13 @@ const NavList = styled.ul`
   }
 `;
 
-const Icon = styled.span`
-  position: relative;
-  left: -8px;
-  font-size: 20px !important;
-`;
-
 const NavItems = ({menuItems, ...props}) => {
   return(menuItems.map(m => (
     <li key={m.label}
       onMouseEnter={(m.children ? props.openPopoverMenu : props.closePopoverMenu)}
       onClick={props.handleClick}>
       <NavLink to={m.path} exact={(m.path === '/')}>
-        <Icon className={`icon-${m.icon}`}/>
+        <i className={`icon-${m.icon}`}>{m.icon}</i>
         {m.label}
       </NavLink>
       {
@@ -85,7 +80,7 @@ const NavItems = ({menuItems, ...props}) => {
 
 const Submenu = ({menuItem, ...props}) => {
   return(
-    <Popover open={props.servicesOpen && props.anchorEl && props.anchorEl.children[0].textContent === menuItem.label}
+    <Popover open={props.servicesOpen && props.anchorEl && props.anchorEl.children[0].textContent.indexOf(menuItem.label) > -1 }
       anchorEl={props.anchorEl}
       anchorOrigin={props.anchorOrigin}
       targetOrigin={props.targetOrigin}
@@ -98,7 +93,7 @@ const Submenu = ({menuItem, ...props}) => {
           <MenuItem onClick={props.closePopoverMenu}
             value={0}
             primaryText={menuItem.label}
-            leftIcon={<Icon className={`icon-${menuItem.icon}`}/>}/>
+            leftIcon={<i className={cx(`icon-${menuItem.icon}`)} >{menuItem.icon}</i>}/>
         </NavLink>
         {menuItem['children'].map((m, i) => {
           return(
@@ -107,7 +102,7 @@ const Submenu = ({menuItem, ...props}) => {
                 onClick={props.closePopoverMenu}
                 value={i + 1}
                 primaryText={m.label}
-                leftIcon={<i className={`icon-${m.icon}`} ></i>}
+                leftIcon={<i className={cx(`icon-${m.icon}`, css`display: inline-block; position: relative; left: -8px; font-size: 20px !important;`)} >{m.icon}</i>}
               />
             </NavLink>
           );

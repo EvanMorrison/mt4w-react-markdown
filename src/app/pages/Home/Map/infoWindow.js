@@ -7,7 +7,7 @@ export default `<div class="place-card place-card-large">
     <div class="navigate">
       <a target="_blank" href="https://www.google.com/maps/dir//9815+East+Bell+Road,+Scottsdale,+AZ/@33.6396254,-111.9037553,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x872b75efd7e7ace1:0x8c14163ed232d1cd!2m2!1d-111.8687359!2d33.6396303?hl=en-US" 
         class="navigate-link">
-           <i class="icon-call_split icon"></i> 
+           <i class="icon-call_split icon">call_split</i> 
         <div class="navigate-text">Directions</div>
       </a>
     </div>

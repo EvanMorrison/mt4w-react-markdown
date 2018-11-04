@@ -4,6 +4,7 @@ import { injectGlobal } from 'emotion';
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto:900,700,500,400,300,100');
   @import url('https://fonts.googleapis.com/css?family=Philosopher|Montserrat:100,300,600');
+  @import url('https://fonts.googleapis.com/css?family=Material+Icons');
 
   * {
     padding: 0;
@@ -31,17 +32,19 @@ injectGlobal`
   }
 
   @font-face {
-    font-family: 'mt4w-icons';
-    src:
-      url('/assets/fonts/mt4w-icons.svg') format('svg');
-    font-weight: normal;
+    font-family: 'Material Icons';
     font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/fonts/Material-Design-Iconic-Font.woff2) format('woff2'),
+    url(https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/fonts/Material-Design-Iconic-Font.woff) format('woff'),
+    url(https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/fonts/Material-Design-Iconic-Font.ttf) format('truetype');
   }
 
   [class^="icon-"], [class*=" icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'mt4w-icons' !important;
-    speak: none;
+    font-family: 'Material Icons' !important;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
@@ -105,9 +108,7 @@ injectGlobal`
   .icon-phone:before {
     content: "\e0cd";
   }
-  .icon-call_split:before {
-    content: "call_split";
-  }
+  
   .icon-check:before {
     content: "\e5ca";
   }
