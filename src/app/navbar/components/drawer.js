@@ -27,7 +27,7 @@ export default class Drawer extends Component {
     isOpen: this.props.open
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate = (prevProps) => {
     if(prevProps.open !== this.props.open) {
       this.setState({isOpen: true});
     }
@@ -51,5 +51,5 @@ export default class Drawer extends Component {
 
 Drawer.propTypes = {
   open: PropTypes.bool,
-  children: PropTypes.object
+  children: PropTypes.array
 };

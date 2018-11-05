@@ -57,8 +57,6 @@ class MobileNavComponent extends Component {
             <Logo src={logo}/>
           </DrawerHeader>
           <NavMenu position={0}
-            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}
             isDrawerOpen={this.state.isDrawerOpen}
             isMobile={true}
             handleClick={this.toggleDrawer}/>

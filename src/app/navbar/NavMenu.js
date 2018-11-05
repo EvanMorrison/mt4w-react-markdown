@@ -1,12 +1,12 @@
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/MenuItem';
+import Menu from './components/menu';
+import MenuItem from './components/menuItem';
 import NavEntries from './NavMenuData';
-import Popover from 'material-ui/Popover';
+import Popover from './components/popover';
 import React from 'react';
 import styled from 'react-emotion';
 import { css, cx } from 'emotion';
 import { PropTypes } from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { rgba } from 'polished';
 
 const NavList = styled.ul`
@@ -80,34 +80,32 @@ const NavItems = ({menuItems, ...props}) => {
 const Submenu = ({menuItem, ...props}) => {
   return(
     <Popover open={props.servicesOpen && props.anchorEl && props.anchorEl.children[0].textContent.indexOf(menuItem.label) > -1 }
-      anchorEl={props.anchorEl}
-      anchorOrigin={props.anchorOrigin}
-      targetOrigin={props.targetOrigin}
-      useLayerForClickAway={false}
-      onRequestClose={props.closePopoverMenu}>
-      <Menu onMouseLeave={props.closePopoverMenu}
-        desktop={true}
-        onClick={props.handleClick}>
-        <NavLink to={menuItem.path}>
-          <MenuItem onClick={props.closePopoverMenu}
-            value={0}
-            primaryText={menuItem.label}
-            leftIcon={<i className={cx(`icon-${menuItem.icon}`)} >{menuItem.icon}</i>}/>
-        </NavLink>
-        {menuItem['children'].map((m, i) => {
-          return(
-            <NavLink key={i} to={m.path}>
-              <MenuItem
-                onClick={props.closePopoverMenu}
-                value={i + 1}
-                primaryText={m.label}
-                leftIcon={<i className={cx(`icon-${m.icon}`, css`display: inline-block; position: relative; left: -8px; font-size: 20px !important;`)} >{m.icon}</i>}
-              />
-            </NavLink>
-          );
-        })}
-      </Menu>
-    </Popover>
+      render={(popoverState) => (
+        <Menu onMouseLeave={props.closePopoverMenu}
+          desktop={true}
+          onClick={props.handleClick}
+          {...popoverState}>
+          <Link to={menuItem.path}>
+            <MenuItem onClick={props.closePopoverMenu}
+              value={0}
+              primaryText={menuItem.label}
+              leftIcon={<i className={cx(`icon-${menuItem.icon}`)} >{menuItem.icon}</i>}/>
+          </Link>
+          {menuItem['children'].map((m, i) => {
+            return(
+              <NavLink key={i} to={m.path}>
+                <MenuItem
+                  onClick={props.closePopoverMenu}
+                  value={i + 1}
+                  primaryText={m.label}
+                  leftIcon={<i className={cx(`icon-${m.icon}`, css`display: inline-block; position: relative; left: -8px; font-size: 20px !important;`)} >{m.icon}</i>}
+                />
+              </NavLink>
+            );
+          })}
+        </Menu>
+      )
+      }/>
   );
 };
 
@@ -165,8 +163,6 @@ NavMenu.propTypes = {
   isMobile: PropTypes.bool,
   isDrawerOpen: PropTypes.bool,
   position: PropTypes.number.isRequired,
-  anchorOrigin: PropTypes.object.isRequired,
-  targetOrigin: PropTypes.object.isRequired,
   handleClick: PropTypes.func,
 };
 
