@@ -60,6 +60,7 @@ module.exports = {
               plugins: [
                 "emotion",
                 "@babel/plugin-proposal-class-properties",
+                "@babel/plugin-syntax-dynamic-import",
                 "react-hot-loader/babel"
               ]
             }
@@ -146,6 +147,9 @@ module.exports = {
     minimize: isProduction,
     minimizer: [
       new UglifyJsPlugin()
-    ]
+    ],
+    splitChunks: {
+      chunks: "all"
+    }
   }
 };
