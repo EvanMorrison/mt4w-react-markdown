@@ -1,10 +1,9 @@
 import AboutComponent from './pages/About';
-import AppointmentComponent from './pages/Appointments';
 import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
 import HomeContainer from './pages/Home';
 import Navbar from './navbar';
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import ServicesContainer from './pages/Services';
 import {theme} from './AppStyles';
 import { ThemeProvider } from 'emotion-theming';
@@ -12,6 +11,9 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import '../assets/fonts/mt4w-icons.svg';
 import '../main.style';
+
+const AppointmentComponent = React.lazy(() => import(/* webpackChunkName: "appointments" */'./pages/Appointments'));
+
 class App extends Component {
   state = {
     // a value from 0 to 1 representing proportion of window scroll until
@@ -42,7 +44,11 @@ class App extends Component {
               <Route exact path="/" component={HomeContainer} />
               <Route path="/services" component={ServicesContainer} />
               <Route path="/about" component={AboutComponent} />
-              <Route path="/appointments" component={AppointmentComponent} />
+              <Route path="/appointments" render={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <AppointmentComponent/>
+                </Suspense>
+              )}/>
               <Redirect to="/" component={HomeContainer} />
             </Switch>
             <Footer />
