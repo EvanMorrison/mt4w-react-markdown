@@ -12,12 +12,17 @@ const FooterWrapper = styled(Row)`
   align-content: center;
   justify-content: space-between;
 
-  > div {
+  div {
     flex: 1;
     display: flex;
     margin: auto;
     max-width: 1280px;
-    justify-content: space-between;
+    justify-content: flex-start;
+
+    span {
+      margin-right: 30px;
+      color: ${() => rgba('#FFFFFF', 0.4)};
+    }
   }
 `;
 
@@ -34,10 +39,11 @@ const Footer = () => (
   <FooterWrapper>
     <div>
       <Column>
-        <p>&copy;2018</p>
-        <p>MT4W, LLC</p>
+        <Row>
+          <span>&copy;2018</span>
+          <span>MT4W, LLC</span>
+        </Row>
       </Column>
-      <Column></Column>
       <Column>
         <SocialLink href=""><i className="icon-facebook-square"></i> </SocialLink>
       </Column>

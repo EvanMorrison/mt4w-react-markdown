@@ -3,7 +3,6 @@ import AppointmentComponent from './pages/Appointments';
 import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
 import HomeContainer from './pages/Home';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Navbar from './navbar';
 import React, { Component } from 'react';
 import ServicesContainer from './pages/Services';
@@ -35,22 +34,20 @@ class App extends Component {
   render() {
     return(
       <BrowserRouter>
-        <MuiThemeProvider >
-          <ThemeProvider theme={theme}>
-            <div>
-              <HeadingComponent position={this.state.scrollPosition} />
-              <Navbar position={this.state.scrollPosition} />
-              <Switch>
-                <Route exact path="/" component={HomeContainer} />
-                <Route path="/services" component={ServicesContainer} />
-                <Route path="/about" component={AboutComponent} />
-                <Route path="/appointments" component={AppointmentComponent} />
-                <Redirect to="/" component={HomeContainer} />
-              </Switch>
-              <Footer />
-            </div>
-          </ThemeProvider>
-        </MuiThemeProvider>
+        <ThemeProvider theme={theme}>
+          <div>
+            <HeadingComponent position={this.state.scrollPosition} />
+            <Navbar position={this.state.scrollPosition} />
+            <Switch>
+              <Route exact path="/" component={HomeContainer} />
+              <Route path="/services" component={ServicesContainer} />
+              <Route path="/about" component={AboutComponent} />
+              <Route path="/appointments" component={AppointmentComponent} />
+              <Redirect to="/" component={HomeContainer} />
+            </Switch>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </BrowserRouter>
     );
   }

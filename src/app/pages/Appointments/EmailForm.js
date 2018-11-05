@@ -1,7 +1,7 @@
-import RaisedButton from 'material-ui/RaisedButton';
 import React, { Component } from 'react';
 import styled from 'react-emotion';
-import TextField from 'material-ui/TextField';
+import { Button } from '@rmwc/button';
+import { TextField } from '@rmwc/textfield';
 import { PropTypes } from 'prop-types';
 import { rgba } from 'polished';
 
@@ -25,11 +25,11 @@ const Form = styled.form`
 `;
 
 const Input = styled(TextField)`
-  margin-left: 30px;
+  margin: 15px 30px;
   width: 80% !important;
 `;
 
-const Button = styled(RaisedButton)`
+const StyledButton = styled(Button)`
   margin: 24px 30px;
   width: 50px;
 
@@ -50,22 +50,22 @@ class EmailForm extends Component {
         <div className="titlebar">
           Send a message here:
         </div>
-        <Input type="text" name="name" floatingLabelText="name"
+        <Input type="text" name="name" label="name" outlined
           value={this.props.message.name}
           onChange={this.props.handleInput}/>
-        <Input type="text" name="phone" floatingLabelText="phone"
+        <Input type="text" name="phone" label="phone" outlined
           value={this.props.message.phone}
           onChange={this.props.handleInput}/>
-        <Input type="email" name="email" floatingLabelText="email"
+        <Input type="email" name="email" label="email" outlined
           value={this.props.message.email}
           onChange={this.props.handleInput}
           required={true}/>
-        <Input name="message" floatingLabelText="message" multiLine={true} rows={1}
+        <Input name="message" label="message" outlined
           value={this.props.message.message}
           onChange={this.props.handleInput}/>
-        <Button type="submit" disabled={this.props.sending}>
+        <StyledButton raised disabled={this.props.sending}>
           Send
-        </Button>
+        </StyledButton>
       </Form>
     );
   }
