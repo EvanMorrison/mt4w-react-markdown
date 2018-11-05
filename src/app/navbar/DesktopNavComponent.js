@@ -23,8 +23,6 @@ class DesktopNavComponent extends Component {
     return(
       <DesktopNavWrapper position={this.props.position}>
         <NavMenu position={this.props.position}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
           servicesOpen={false}/>
       </DesktopNavWrapper>
     );

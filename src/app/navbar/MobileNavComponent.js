@@ -1,4 +1,4 @@
-import Drawer from 'material-ui/Drawer';
+import Drawer from './components/drawer';
 import logo from '../../assets/logo_sm.png';
 import NavMenu from './NavMenu';
 import React, { Component } from 'react';
@@ -13,7 +13,11 @@ const Navbutton = styled(Row)`
   justify-content: flex-end;
   align-items: center;
 
-  span {
+  &:hover {
+    cursor: pointer;
+  }
+
+  .icon-menu {
     color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary} !important;
   }
 
@@ -48,15 +52,11 @@ class MobileNavComponent extends Component {
           menu
         </i>
 
-        <Drawer open={this.state.isDrawerOpen}
-          docked={false}
-          onRequestChange={isDrawerOpen => this.setState({isDrawerOpen})}>
+        <Drawer open={this.state.isDrawerOpen}>
           <DrawerHeader>
             <Logo src={logo}/>
           </DrawerHeader>
           <NavMenu position={0}
-            anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-            targetOrigin={{horizontal: 'left', vertical: 'top'}}
             isDrawerOpen={this.state.isDrawerOpen}
             isMobile={true}
             handleClick={this.toggleDrawer}/>
