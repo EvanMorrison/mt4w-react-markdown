@@ -21,10 +21,8 @@ class Popover extends Component {
 
   componentDidUpdate = (prevProps) => {
     if(!prevProps.open && this.props.open) {
-      console.log('open menu');
       this.setState({isOpen: true, height: 180, width: 180});
     } else if(prevProps.open && !this.props.open) {
-      console.log('close menu');
       this.setState({isOpen: false, height: 0, width: 0});
     }
   }

@@ -114,6 +114,8 @@ module.exports = {
             { name: "react-dom", var: "ReactDOM", path: `umd/react-dom.${isProduction ? "production.min" : "development"}.js` },
             { name: "react-router", var: "ReactRouter", path: "umd/react-router.min.js" },
             { name: "react-router-dom", var: "ReactRouterDOM", path: "umd/react-router-dom.min.js" },
+            { name: "@material/button", var: "Button", cssOnly: true, style: "dist/mdc.button.css"},
+            { name: "@material/textfield", var: "TextField", cssOnly: true, style: "dist/mdc.textfield.css"}
           ]
         }
       })
