@@ -13,12 +13,12 @@ const Navbutton = styled(Row)`
   justify-content: flex-end;
   align-items: center;
 
-  &:hover {
-    cursor: pointer;
-  }
-
   .icon-menu {
     color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary} !important;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   @media (min-width: 1024px) {
@@ -39,27 +39,31 @@ const Logo = styled.img`
 class MobileNavComponent extends Component {
   state = { isDrawerOpen: false }
 
-  toggleDrawer = event => {
-    this.setState({isDrawerOpen: !this.state.isDrawerOpen});
+  closeDrawer = event => {
+    this.setState({isDrawerOpen: false});
+  }
+
+  openDrawer = event => {
+    this.setState({isDrawerOpen: true});
   }
 
   render() {
     return(
-      <Navbutton position={this.props.position} >
+      <Navbutton position={this.props.position}>
         <i className="icon-menu"
           css={{color: 'inherit'}}
-          onClick={this.toggleDrawer}>
+          onClick={this.openDrawer}>
           menu
         </i>
 
-        <Drawer open={this.state.isDrawerOpen}>
+        <Drawer open={this.state.isDrawerOpen} closeDrawer={this.closeDrawer}>
           <DrawerHeader>
             <Logo src={logo}/>
           </DrawerHeader>
           <NavMenu position={0}
             isDrawerOpen={this.state.isDrawerOpen}
             isMobile={true}
-            handleClick={this.toggleDrawer}/>
+            handleClick={this.closeDrawer}/>
         </Drawer>
       </Navbutton>
     );

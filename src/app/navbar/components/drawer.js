@@ -23,25 +23,11 @@ const DrawerStyle = styled('div')`
 `;
 
 export default class Drawer extends Component {
-  state = {
-    isOpen: this.props.open
-  }
-
-  componentDidUpdate = (prevProps) => {
-    if(prevProps.open !== this.props.open) {
-      this.setState({isOpen: true});
-    }
-  }
-
-  closeDrawer = () => {
-    this.setState({isOpen: false});
-  }
-
   render() {
     return(
       <div>
-        <Overlay onClick={this.closeDrawer} isOpen={this.state.isOpen}/>
-        <DrawerStyle isOpen={this.state.isOpen}>
+        <Overlay onClick={this.props.closeDrawer} isOpen={this.props.open}/>
+        <DrawerStyle isOpen={this.props.open}>
           {this.props.children}
         </DrawerStyle>
       </div>
@@ -51,5 +37,6 @@ export default class Drawer extends Component {
 
 Drawer.propTypes = {
   open: PropTypes.bool,
-  children: PropTypes.array
+  children: PropTypes.array,
+  closeDrawer: PropTypes.func
 };

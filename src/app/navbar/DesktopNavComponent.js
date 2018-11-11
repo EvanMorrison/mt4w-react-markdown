@@ -22,8 +22,7 @@ class DesktopNavComponent extends Component {
   render() {
     return(
       <DesktopNavWrapper position={this.props.position}>
-        <NavMenu position={this.props.position}
-          servicesOpen={false}/>
+        <NavMenu position={this.props.position}/>
       </DesktopNavWrapper>
     );
   }
