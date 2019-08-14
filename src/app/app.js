@@ -16,6 +16,10 @@ const AboutComponent = React.lazy(() => import(/* webpackChunkName: "about" */'.
 // const HomeContainer = React.lazy(() => import(/* webpackChunkName: "home" */'./pages/Home'));
 const ServicesContainer = React.lazy(() => import(/* webpackChunkName: "services" */'./pages/Services'));
 
+const Loading = () => (
+  <div css={{height: '100vh'}}></div>
+);
+
 class App extends Component {
   state = {
     // a value from 0 to 1 representing proportion of window scroll until
@@ -45,22 +49,22 @@ class App extends Component {
             <Navbar position={this.state.scrollPosition} />
             <Switch>
               <Route exact path="/" render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <HomeContainer/>
                 </Suspense>
               )} />
               <Route path="/services" render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <ServicesContainer/>
                 </Suspense>
               )} />
               <Route path="/about" render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <AboutComponent/>
                 </Suspense>
               )} />
               <Route path="/appointments" render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <AppointmentComponent/>
                 </Suspense>
               )}/>
