@@ -1,6 +1,6 @@
 {
   "name": "mt4w",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "a website for Manual Therapy for Wellness",
   "main": "index.js",
   "scripts": {
