@@ -1,18 +1,24 @@
-import AboutComponent from './pages/About';
 import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
 import HomeContainer from './pages/Home';
 import Navbar from './navbar';
 import React, { Component, Suspense } from 'react';
-import ServicesContainer from './pages/Services';
+import styles from '../main.style';
 import {theme} from './AppStyles';
 import { ThemeProvider } from 'emotion-theming';
+import { Global } from '@emotion/core';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import '../assets/fonts/mt4w-icons.svg';
-import '../main.style';
 
 const AppointmentComponent = React.lazy(() => import(/* webpackChunkName: "appointments" */'./pages/Appointments'));
+const AboutComponent = React.lazy(() => import(/* webpackChunkName: "about" */'./pages/About'));
+// const HomeContainer = React.lazy(() => import(/* webpackChunkName: "home" */'./pages/Home'));
+const ServicesContainer = React.lazy(() => import(/* webpackChunkName: "services" */'./pages/Services'));
+
+const Loading = () => (
+  <div css={{height: '100vh'}}></div>
+);
 
 class App extends Component {
   state = {
@@ -25,27 +31,40 @@ class App extends Component {
     let startTransition = 50; // amount of pixels to scroll before the navbar styling changes
     window.addEventListener('scroll', evt => {
       let position = window.scrollY;
-      if(position < startTransition) {
+      if (position < startTransition) {
         this.setState({scrollPosition: position / startTransition});
-      } else if(position >= startTransition && this.state.scrollPosition < 1) {
+      } else if (position >= startTransition && this.state.scrollPosition < 1) {
         this.setState({scrollPosition: 1});
       }
     });
   }
 
   render() {
-    return(
+    return (
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <div>
+            <Global styles={styles}/>
             <HeadingComponent position={this.state.scrollPosition} />
             <Navbar position={this.state.scrollPosition} />
             <Switch>
-              <Route exact path="/" component={HomeContainer} />
-              <Route path="/services" component={ServicesContainer} />
-              <Route path="/about" component={AboutComponent} />
+              <Route exact path="/" render={() => (
+                <Suspense fallback={<Loading/>}>
+                  <HomeContainer/>
+                </Suspense>
+              )} />
+              <Route path="/services" render={() => (
+                <Suspense fallback={<Loading/>}>
+                  <ServicesContainer/>
+                </Suspense>
+              )} />
+              <Route path="/about" render={() => (
+                <Suspense fallback={<Loading/>}>
+                  <AboutComponent/>
+                </Suspense>
+              )} />
               <Route path="/appointments" render={() => (
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<Loading/>}>
                   <AppointmentComponent/>
                 </Suspense>
               )}/>

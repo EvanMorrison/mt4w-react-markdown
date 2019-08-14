@@ -6,7 +6,7 @@ import { SectionTitle, SectionBody, Paragraph } from '../../AppStyles';
 
 class MLDComponent extends React.Component {
   render() {
-    return(
+    return (
       <React.Fragment>
         <SectionTitle image={this.props.info.image}>Manual Lymphatic Drainage</SectionTitle>
         <SectionBody>

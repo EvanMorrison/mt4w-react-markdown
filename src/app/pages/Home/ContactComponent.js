@@ -1,6 +1,6 @@
 import appdata from '../../../content/appState';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Row, Column } from '../../AppStyles';
 
 const ContactSection = styled(Row)`

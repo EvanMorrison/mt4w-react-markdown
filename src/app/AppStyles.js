@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 // theme settings used with Emotion
 
@@ -54,7 +54,7 @@ export const SectionTitle = styled.h1`
   position: relative;
   font-family: ${props => props.theme.titleFont};
   font-style: italic;
-  font-size: 3em;
+  font-size: 2.75em;
   margin: 1em 0 1em;
   transition: all 0.2s ease-out;
 
@@ -66,6 +66,7 @@ export const SectionTitle = styled.h1`
     background-position: center center;
     position: absolute;
     top: 50%;
+    left: 450px;
     transform: translateY(-50%);
     margin-left: 50px;
     display: inline-block;

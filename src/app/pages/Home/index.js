@@ -5,7 +5,7 @@ import LocationComponent from './LocationComponent';
 
 class HomeContainer extends React.Component {
   render() {
-    return(
+    return (
       <div>
         <HeroComponent />
         <ContactComponent />

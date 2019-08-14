@@ -2,7 +2,7 @@ import appState from '../../../content/appState';
 import hero from '../../../assets/images/background-1998454_980.jpg';
 import PanelComponent from './PanelComponent';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { PropTypes } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {theme} from '../../AppStyles';
@@ -54,10 +54,10 @@ class HeroComponent extends React.Component {
   render() {
     const panels = this.state.panels;
     const colors = [theme.logoGreen, theme.logoOrange, theme.logoBlue];
-    return(
+    return (
       <HeroSection>
         {panels.map((p, i) => {
-          return(<PanelComponent key={i} props={p} color={colors[i]} onClick={(e) => this.panelClick(e, i)}/>);
+          return (<PanelComponent key={i} props={p} color={colors[i]} onClick={(e) => this.panelClick(e, i)}/>);
         })}
       </HeroSection>
     );

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { PropTypes } from 'prop-types';
 import { Column } from '../AppStyles';
 
@@ -62,7 +62,7 @@ const Tagline = styled.h3`
 
 class HeadingComponent extends React.Component {
   render() {
-    return(
+    return (
       <StyledWrapper>
         <Column>
           <Brand position={this.props.position}>

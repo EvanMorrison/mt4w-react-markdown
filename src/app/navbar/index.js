@@ -2,7 +2,7 @@ import DesktopNavComponent from './DesktopNavComponent';
 import logo from '../../assets/logo_sm.png';
 import MobileNavComponent from './MobileNavComponent';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { PropTypes } from 'prop-types';
 import { rgba } from 'polished';
 import { Row, Column } from '../AppStyles';
@@ -78,17 +78,8 @@ const NavContact = styled.p`
 `;
 
 class Navbar extends React.Component {
-  state = {
-    isNavbarFixed: false,
-    isDrawerOpen: false
-  }
-
-  toggleDrawer = (evt) => {
-    this.setState({isDrawerOpen: !this.state.isDrawerOpen});
-  }
-
   render() {
-    return(
+    return (
       <CustomNavbar position={this.props.position}>
         <NavbarContentContainer>
           <BrandGroup position={this.props.position}>

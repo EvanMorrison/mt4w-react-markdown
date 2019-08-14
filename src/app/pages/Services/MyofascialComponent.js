@@ -5,7 +5,7 @@ import { PropTypes } from 'prop-types';
 import { SectionTitle, SectionBody, Paragraph } from '../../AppStyles';
 
 const MyofascialComponent = ({info}) => {
-  return(
+  return (
     <React.Fragment>
       <SectionTitle image={info.image}>Myofascial Release</SectionTitle>
       <SectionBody>

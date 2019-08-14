@@ -2,7 +2,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const WebpackCdnPlugin = require("webpack-cdn-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 const webpack = require("webpack");
 
@@ -55,10 +55,17 @@ module.exports = {
                     "targets": "> 0.25%, not dead"
                   }
                 ],
-                "@babel/preset-react"
+                "@babel/preset-react",
+                [
+                  "@emotion/babel-preset-css-prop",
+                  {
+                    "autoLabel": true,
+                    "labelFormat": "[local]",
+                    "sourceMap": true,
+                  }
+                ]
               ],
               plugins: [
-                "emotion",
                 "@babel/plugin-proposal-class-properties",
                 "@babel/plugin-syntax-dynamic-import",
                 "react-hot-loader/babel"
@@ -94,6 +101,16 @@ module.exports = {
         test: /\.md$/,
         use: [{
           loader: "raw-loader"
+        }]
+      }, {
+        test: /manifest\.(webmanifest|json)$/,
+        use: [{
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]"
+          }
+        }, {
+          loader: "app-manifest-loader"
         }]
       }
     ]
@@ -148,7 +165,7 @@ module.exports = {
   optimization: {
     minimize: isProduction,
     minimizer: [
-      new UglifyJsPlugin()
+      new TerserPlugin()
     ],
     splitChunks: {
       chunks: "all"

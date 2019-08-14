@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Button } from '@rmwc/button';
 import { TextField } from '@rmwc/textfield';
 import { PropTypes } from 'prop-types';
@@ -45,7 +45,7 @@ const StyledButton = styled(Button)`
 
 class EmailForm extends Component {
   render() {
-    return(
+    return (
       <Form onSubmit={this.props.onSubmit}>
         <div className="titlebar">
           Send a message here:

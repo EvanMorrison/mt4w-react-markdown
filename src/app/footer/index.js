@@ -1,5 +1,6 @@
+import moment from 'moment';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 
 import { Row, Column } from '../AppStyles';
@@ -26,26 +27,16 @@ const FooterWrapper = styled(Row)`
   }
 `;
 
-const SocialLink = styled.a`
-  align-self: flex-end;
-  text-decoration: none;
-
-  i {
-    color: white;
-  }
-`;
-
 const Footer = () => (
   <FooterWrapper>
     <div>
       <Column>
         <Row>
-          <span>&copy;2018</span>
+          <span>&copy;{moment().format('YYYY')}</span>
           <span>MT4W, LLC</span>
         </Row>
       </Column>
       <Column>
-        <SocialLink href=""><i className="icon-facebook-square"></i> </SocialLink>
       </Column>
     </div>
   </FooterWrapper>
