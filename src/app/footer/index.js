@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from 'moment';
 import React from 'react';
 import styled from 'react-emotion';
 import { rgba } from 'polished';
@@ -27,15 +27,6 @@ const FooterWrapper = styled(Row)`
   }
 `;
 
-const SocialLink = styled.a`
-  align-self: flex-end;
-  text-decoration: none;
-
-  i {
-    color: white;
-  }
-`;
-
 const Footer = () => (
   <FooterWrapper>
     <div>
@@ -46,7 +37,6 @@ const Footer = () => (
         </Row>
       </Column>
       <Column>
-        <SocialLink href=""><i className="icon-facebook-square"></i> </SocialLink>
       </Column>
     </div>
   </FooterWrapper>
