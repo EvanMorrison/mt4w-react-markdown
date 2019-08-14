@@ -12,15 +12,22 @@ module.exports = {
     }
   },
   "plugins": [
+      "emotion",
       "standard",
-      "react"
+      "react",
+      "react-hooks",
   ],
   "rules": {
     "comma-dangle": "off",
-    "keyword-spacing": ["error", {"before": true, "after": false, "overrides": {"else": {"after": true}, "from": {"after": true}, "import": {"after": true}, "case": {"after": true}}}],
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error",
+    "emotion/syntax-preference": [2, "string"],
     "no-template-curly-in-string": "off",
+    "no-unused-vars": ["error", {"vars": "all", "varsIgnorePattern": "React|^_$", "args": "none", "ignoreRestSiblings": false}],
     "object-curly-spacing": "off",
     "react/jsx-uses-vars": [2],
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
     "semi": ["error", "always"],
     "space-before-function-paren": ["error", "never"],
     "space-unary-ops": [2, {"words": true, "nonwords": false, "overrides": {"typeof": false}}],
@@ -29,7 +36,7 @@ module.exports = {
   "settings": {
     "react": {
         "pragma": "React",
-        "version": "16.6.0"
+        "version": "16.9.0"
     }
 }
 };

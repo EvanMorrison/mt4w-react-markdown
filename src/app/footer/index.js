@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 
 import { Row, Column } from '../AppStyles';

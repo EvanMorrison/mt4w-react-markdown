@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import styled, { css } from 'react-emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 const PopoverStyle = styled('div')`
   position: absolute;
@@ -28,17 +29,17 @@ class Popover extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if(!prevProps.open && this.props.open) {
+    if (!prevProps.open && this.props.open) {
       this.setState({height: 220, width: 240});
-    } else if(prevProps.open && !this.props.open) {
+    } else if (prevProps.open && !this.props.open) {
       this.setState({height: 0, width: 0});
     }
   }
 
   render() {
-    return(
+    return (
       <PopoverStyle isOpen={this.props.open} height={this.state.height} width={this.state.width}>
-        <div className={css`position: relative;`}>
+        <div css={css`position: relative;`}>
           {this.props.render(this.state)}
         </div>
       </PopoverStyle>

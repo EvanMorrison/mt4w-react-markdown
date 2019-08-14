@@ -17,7 +17,7 @@ class AppointmentComponent extends React.Component {
   };
 
   handleFormInput = event => {
-    if(this.state.emailStatus !== 'not sent') this.setState({emailStatus: 'not sent'});
+    if (this.state.emailStatus !== 'not sent') this.setState({emailStatus: 'not sent'});
     let message = this.state.message;
     message[event.target.name] = event.target.value;
     this.setState({ message });
@@ -39,7 +39,7 @@ class AppointmentComponent extends React.Component {
     xhr.onreadystatechange = () => {
       // console.log( xhr.status )
       // console.log(xhr.responseText);
-      if(xhr.status === 200) {
+      if (xhr.status === 200) {
         this.setState({emailStatus: 'success', sending: false});
       } else {
         this.setState({emailStatus: 'failed', sending: false});
@@ -53,7 +53,7 @@ class AppointmentComponent extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <Section topcolor="logoOrange">
         <SectionTitle>Appointments</SectionTitle>
         <SectionBody>

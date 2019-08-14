@@ -10,14 +10,14 @@ const withGoogleApi = ({apiKey}) => (WrappedComponent) => {
     }
 
     componentDidMount = () => {
-      if(window.google) {
+      if (window.google) {
         this.setState({
           loaded: true,
           google: window.google
         });
       } else {
         let apiScript = document.querySelector('script[src="' + mapurl + '"]');
-        if(!apiScript) {
+        if (!apiScript) {
           const newScript = document.createElement('script');
           newScript.src = mapurl;
           newScript.type = 'text/javascript';
@@ -34,7 +34,7 @@ const withGoogleApi = ({apiKey}) => (WrappedComponent) => {
     }
 
     render() {
-      return(
+      return (
         <WrappedComponent {...this.state} />
       );
     }

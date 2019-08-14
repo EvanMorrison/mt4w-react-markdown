@@ -3,7 +3,7 @@ import MLDComponent from './MLDComponent';
 import MyofascialComponent from './MyofascialComponent';
 import React from 'react';
 import ServicesComponent from './ServicesComponent';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Route, NavLink } from 'react-router-dom';
 import { Section } from '../../AppStyles';
 import appState from '../../../content/appState';
@@ -30,7 +30,7 @@ const StyledList = styled.ul`
 class ServicesContainer extends React.Component {
   render() {
     const props = appState.homePage.heroPanels;
-    return(
+    return (
       <Section topcolor="logoBlue">
         <nav>
           <StyledList>

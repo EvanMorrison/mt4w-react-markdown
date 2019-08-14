@@ -5,7 +5,7 @@ import { SectionTitle, SectionBody, Paragraph } from '../../AppStyles';
 
 class ServicesComponent extends React.Component {
   render() {
-    return(
+    return (
       <React.Fragment>
         <SectionTitle>Services</SectionTitle>
         <SectionBody>

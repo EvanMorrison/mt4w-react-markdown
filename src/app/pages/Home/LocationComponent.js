@@ -1,6 +1,6 @@
 import Map from './Map';
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { Row, Column } from '../../AppStyles';
 
@@ -32,7 +32,7 @@ const SectionHeading = styled.h1`
 
 class LocationComponent extends React.Component {
   render() {
-    return(
+    return (
       <LocationWrapper>
         <Column >
           <SectionHeading>Where to Find Us</SectionHeading>

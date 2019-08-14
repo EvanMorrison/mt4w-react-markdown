@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { PropTypes } from 'prop-types';
 
 const ItemStyle = styled('li')`
@@ -8,7 +8,7 @@ const ItemStyle = styled('li')`
 
 class MenuItem extends Component {
   render() {
-    return(
+    return (
       <ItemStyle {...this.props}>
         {this.props.children}
       </ItemStyle>

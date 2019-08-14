@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 
 class Menu extends Component {
   render() {
-    return(
+    return (
       <ul onMouseLeave={this.props.onMouseLeave}>
         {this.props.children}
       </ul>

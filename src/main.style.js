@@ -1,8 +1,8 @@
 /* stylelint-disable */
-import { injectGlobal } from 'emotion';
+import { css } from '@emotion/core';
 import { rgba } from 'polished';
 
-injectGlobal`
+export default css`
   @import url('https://fonts.googleapis.com/css?family=Roboto:900,700,500,400,300,100');
   @import url('https://fonts.googleapis.com/css?family=Philosopher|Montserrat:100,300,600');
   @import url('https://fonts.googleapis.com/css?family=Material+Icons');

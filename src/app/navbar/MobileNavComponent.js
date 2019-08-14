@@ -2,7 +2,7 @@ import Drawer from './components/drawer';
 import logo from '../../assets/logo_sm.png';
 import NavMenu from './NavMenu';
 import React, { Component } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { rgba } from 'polished';
 import { Row } from '../AppStyles';
 import { PropTypes } from 'prop-types';
@@ -48,7 +48,7 @@ class MobileNavComponent extends Component {
   }
 
   render() {
-    return(
+    return (
       <Navbutton position={this.props.position}>
         <i className="icon-menu"
           css={{color: 'inherit'}}

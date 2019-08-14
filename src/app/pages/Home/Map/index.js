@@ -1,7 +1,7 @@
 import infoWindowContent from './infoWindow';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { css, cx } from 'react-emotion';
+import { css } from '@emotion/core';
 import withGoogleApi from './GoogleApiComponent';
 import Style from './map.style';
 
@@ -13,10 +13,10 @@ class MapContainer extends React.Component {
     const address = this.props.address;
     const mapRef = this.mapNode;
     const geocoder = new google.maps.Geocoder();
-    if(address) {
+    if (address) {
       geocoder.geocode({address}, (results, status) => {
         let computedCenter;
-        if(status === 'OK') computedCenter = results[0].geometry.location;
+        if (status === 'OK') computedCenter = results[0].geometry.location;
         initMap(computedCenter);
       });
     }
@@ -55,15 +55,15 @@ class MapContainer extends React.Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if(!prevProps.google && this.props.google) {
+    if (!prevProps.google && this.props.google) {
       this.loadMap();
     }
   }
 
   render() {
-    return(
+    return (
       <Style>
-        <div className={cx('map-group', css`height: 400px; width: 95%; max-width: 600px; margin: 0 auto;`)}
+        <div className='map-group' css={css`height: 400px; width: 95%; max-width: 600px; margin: 0 auto;`}
           ref={el => { this.mapNode = el; }}>
         </div>
       </Style>

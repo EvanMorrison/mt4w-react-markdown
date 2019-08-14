@@ -3,8 +3,8 @@ import MenuItem from './components/menuItem';
 import NavEntries from './NavMenuData';
 import Popover from './components/popover';
 import React from 'react';
-import styled from 'react-emotion';
-import { css, cx } from 'emotion';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { PropTypes } from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 import { rgba } from 'polished';
@@ -55,7 +55,7 @@ const NavList = styled.ul`
 `;
 
 const NavItems = ({menuItems, ...props}) => {
-  return(menuItems.map(m => (
+  return (menuItems.map(m => (
     <li key={m.label}
       onMouseEnter={(m.children ? props.openPopoverMenu : props.closePopoverMenu)}
       onClick={props.handleClick}>
@@ -80,7 +80,7 @@ const NavItems = ({menuItems, ...props}) => {
 };
 
 const Submenu = ({menuItem, ...props}) => {
-  return(
+  return (
     <Popover open={props.popoverOpen}
       render={(popoverState) => (
         <Menu onMouseLeave={props.closePopoverMenu}
@@ -96,12 +96,12 @@ const Submenu = ({menuItem, ...props}) => {
             </Link>
           </MenuItem>
           {menuItem['children'].map((m, i) => {
-            return(
+            return (
               <MenuItem
                 key={m.label}
                 onClick={props.closePopoverMenu}>
                 <NavLink to={m.path}>
-                  <i className={cx(`icon-${m.icon} submenu`, css`display: inline-block; position: relative; left: -8px; font-size: 20px;`)} >{m.icon}</i>
+                  <i className={`icon-${m.icon} submenu`} css={css`display: inline-block; position: relative; left: -8px; font-size: 20px;`} >{m.icon}</i>
                   <span css={{color: '#000000'}}>{m.label}</span>
                 </NavLink>
               </MenuItem>
@@ -124,20 +124,19 @@ class NavMenu extends React.Component {
   }
 
   closePopoverMenu = () => {
-    console.log('close menu');
-    if(!this.props.isDrawerOpen) this.setState({popoverOpen: false});
+    if (!this.props.isDrawerOpen) this.setState({popoverOpen: false});
   }
 
   componentDidUpdate = (prevProps) => {
-    if(!this.props.isDrawerOpen && prevProps.isDrawerOpen) {
+    if (!this.props.isDrawerOpen && prevProps.isDrawerOpen) {
       this.setState({popoverOpen: true}); // eslint-disable-line react/no-string-refs
-    } else if(this.props.isDrawerOpen !== prevProps.isDrawerOpen && prevProps.isDrawerOpen) {
+    } else if (this.props.isDrawerOpen !== prevProps.isDrawerOpen && prevProps.isDrawerOpen) {
       this.setState({popoverOpen: false});
     }
   }
 
   render() {
-    return(
+    return (
       <nav className="navbar">
         <NavList position={this.props.position}
           isMobile={this.props.isMobile}>
