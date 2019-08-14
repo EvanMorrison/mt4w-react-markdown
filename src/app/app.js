@@ -1,5 +1,6 @@
 import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
+import HomeContainer from './pages/Home';
 import Navbar from './navbar';
 import React, { Component, Suspense } from 'react';
 import styles from '../main.style';
@@ -12,7 +13,7 @@ import '../assets/fonts/mt4w-icons.svg';
 
 const AppointmentComponent = React.lazy(() => import(/* webpackChunkName: "appointments" */'./pages/Appointments'));
 const AboutComponent = React.lazy(() => import(/* webpackChunkName: "about" */'./pages/About'));
-const HomeContainer = React.lazy(() => import(/* webpackChunkName: "home" */'./pages/Home'));
+// const HomeContainer = React.lazy(() => import(/* webpackChunkName: "home" */'./pages/Home'));
 const ServicesContainer = React.lazy(() => import(/* webpackChunkName: "services" */'./pages/Services'));
 
 class App extends Component {
@@ -43,12 +44,12 @@ class App extends Component {
             <HeadingComponent position={this.state.scrollPosition} />
             <Navbar position={this.state.scrollPosition} />
             <Switch>
-              <Route exact path="/" component={() => (
+              <Route exact path="/" render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
                   <HomeContainer/>
                 </Suspense>
               )} />
-              <Route path="/services" component={() => (
+              <Route path="/services" render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
                   <ServicesContainer/>
                 </Suspense>

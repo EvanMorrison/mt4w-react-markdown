@@ -102,6 +102,16 @@ module.exports = {
         use: [{
           loader: "raw-loader"
         }]
+      }, {
+        test: /manifest\.(webmanifest|json)$/,
+        use: [{
+          loader: "file-loader",
+          options: {
+            name: "[path][name].[ext]"
+          }
+        }, {
+          loader: "app-manifest-loader"
+        }]
       }
     ]
   },

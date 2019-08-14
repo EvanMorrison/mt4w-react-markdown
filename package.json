@@ -48,6 +48,7 @@
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@emotion/babel-preset-css-prop": "^10.0.14",
+    "app-manifest-loader": "^2.4.0",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^0.1.19",

@@ -1,0 +1,13 @@
+{
+  "name": "Manual Therapy for Wellness",
+  "short_name": "MT4W",
+  "start_url": "https://www.mt4w.com",
+  "description": "Providing manual therapies for lymphatic wellness",
+  "icons": [
+    {
+      "src": "assets/logo_sm.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    }
+  ]
+}
