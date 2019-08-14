@@ -89,8 +89,10 @@ const Submenu = ({menuItem, ...props}) => {
           <MenuItem onClick={props.closePopoverMenu}
             {...menuItem}>
             <Link to={menuItem.path}>
-              <i className={`icon-${menuItem.icon}`}>{menuItem.icon}</i>
-              {menuItem.label}
+              <span css={css`* {color: #000000;}`}>
+                <i className={`icon-${menuItem.icon}`}>{menuItem.icon}</i>
+                <span>{menuItem.label}</span>
+              </span>
             </Link>
           </MenuItem>
           {menuItem['children'].map((m, i) => {
@@ -100,7 +102,7 @@ const Submenu = ({menuItem, ...props}) => {
                 onClick={props.closePopoverMenu}>
                 <NavLink to={m.path}>
                   <i className={cx(`icon-${m.icon} submenu`, css`display: inline-block; position: relative; left: -8px; font-size: 20px;`)} >{m.icon}</i>
-                  <span>{m.label}</span>
+                  <span css={{color: '#000000'}}>{m.label}</span>
                 </NavLink>
               </MenuItem>
             );

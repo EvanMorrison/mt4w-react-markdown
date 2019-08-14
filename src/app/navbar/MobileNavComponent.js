@@ -14,7 +14,7 @@ const Navbutton = styled(Row)`
   align-items: center;
 
   .icon-menu {
-    color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary} !important;
+    color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary};
 
     &:hover {
       cursor: pointer;
