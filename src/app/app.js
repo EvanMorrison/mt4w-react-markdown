@@ -1,10 +1,7 @@
-import AboutComponent from './pages/About';
 import Footer from './footer';
 import HeadingComponent from './siteHeading/HeadingComponent';
-import HomeContainer from './pages/Home';
 import Navbar from './navbar';
 import React, { Component, Suspense } from 'react';
-import ServicesContainer from './pages/Services';
 import {theme} from './AppStyles';
 import { ThemeProvider } from 'emotion-theming';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
@@ -13,6 +10,9 @@ import '../assets/fonts/mt4w-icons.svg';
 import '../main.style';
 
 const AppointmentComponent = React.lazy(() => import(/* webpackChunkName: "appointments" */'./pages/Appointments'));
+const AboutComponent = React.lazy(() => import(/* webpackChunkName: "about" */'./pages/About'));
+const HomeContainer = React.lazy(() => import(/* webpackChunkName: "home" */'./pages/Home'));
+const ServicesContainer = React.lazy(() => import(/* webpackChunkName: "services" */'./pages/Services'));
 
 class App extends Component {
   state = {
@@ -41,9 +41,21 @@ class App extends Component {
             <HeadingComponent position={this.state.scrollPosition} />
             <Navbar position={this.state.scrollPosition} />
             <Switch>
-              <Route exact path="/" component={HomeContainer} />
-              <Route path="/services" component={ServicesContainer} />
-              <Route path="/about" component={AboutComponent} />
+              <Route exact path="/" component={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <HomeContainer/>
+                </Suspense>
+              )} />
+              <Route path="/services" component={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ServicesContainer/>
+                </Suspense>
+              )} />
+              <Route path="/about" render={() => (
+                <Suspense fallback={<div>Loading...</div>}>
+                  <AboutComponent/>
+                </Suspense>
+              )} />
               <Route path="/appointments" render={() => (
                 <Suspense fallback={<div>Loading...</div>}>
                   <AppointmentComponent/>
