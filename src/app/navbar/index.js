@@ -78,15 +78,6 @@ const NavContact = styled.p`
 `;
 
 class Navbar extends React.Component {
-  state = {
-    isNavbarFixed: false,
-    isDrawerOpen: false
-  }
-
-  toggleDrawer = (evt) => {
-    this.setState({isDrawerOpen: !this.state.isDrawerOpen});
-  }
-
   render() {
     return(
       <CustomNavbar position={this.props.position}>

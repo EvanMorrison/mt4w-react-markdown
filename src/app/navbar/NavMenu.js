@@ -21,7 +21,9 @@ const NavList = styled.ul`
     transition: all 0.2s linear;
 
     a {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      width: 100%;
       padding: 8px 20px;
       border-radius: 3px;
 
@@ -32,7 +34,7 @@ const NavList = styled.ul`
     }
 
     /* show top-level menu icons only on mobile */
-    [class^='icon-'] {
+    [class^='icon-']:not(.submenu) {
       display: ${props => props.isMobile ? 'inline-block' : 'none'};
       color: ${props => props.theme.primaryText} !important;
     }
@@ -70,7 +72,7 @@ const NavItems = ({menuItems, ...props}) => {
               </ul>
             )
             : <Submenu {...props} menuItem={m}/>
-          : ''
+          : null
         )
       }
     </li>
@@ -79,28 +81,30 @@ const NavItems = ({menuItems, ...props}) => {
 
 const Submenu = ({menuItem, ...props}) => {
   return(
-    <Popover open={props.servicesOpen && props.anchorEl && props.anchorEl.children[0].textContent.indexOf(menuItem.label) > -1 }
+    <Popover open={props.popoverOpen}
       render={(popoverState) => (
         <Menu onMouseLeave={props.closePopoverMenu}
-          desktop={true}
           onClick={props.handleClick}
           {...popoverState}>
-          <Link to={menuItem.path}>
-            <MenuItem onClick={props.closePopoverMenu}
-              value={0}
-              primaryText={menuItem.label}
-              leftIcon={<i className={cx(`icon-${menuItem.icon}`)} >{menuItem.icon}</i>}/>
-          </Link>
+          <MenuItem onClick={props.closePopoverMenu}
+            {...menuItem}>
+            <Link to={menuItem.path}>
+              <span css={css`* {color: #000000;}`}>
+                <i className={`icon-${menuItem.icon}`}>{menuItem.icon}</i>
+                <span>{menuItem.label}</span>
+              </span>
+            </Link>
+          </MenuItem>
           {menuItem['children'].map((m, i) => {
             return(
-              <NavLink key={i} to={m.path}>
-                <MenuItem
-                  onClick={props.closePopoverMenu}
-                  value={i + 1}
-                  primaryText={m.label}
-                  leftIcon={<i className={cx(`icon-${m.icon}`, css`display: inline-block; position: relative; left: -8px; font-size: 20px !important;`)} >{m.icon}</i>}
-                />
-              </NavLink>
+              <MenuItem
+                key={m.label}
+                onClick={props.closePopoverMenu}>
+                <NavLink to={m.path}>
+                  <i className={cx(`icon-${m.icon} submenu`, css`display: inline-block; position: relative; left: -8px; font-size: 20px;`)} >{m.icon}</i>
+                  <span css={{color: '#000000'}}>{m.label}</span>
+                </NavLink>
+              </MenuItem>
             );
           })}
         </Menu>
@@ -111,24 +115,24 @@ const Submenu = ({menuItem, ...props}) => {
 
 class NavMenu extends React.Component {
   state = {
-    servicesOpen: false,
-    anchorEl: null
+    popoverOpen: false,
   }
 
   openPopoverMenu = event => {
     event.preventDefault();
-    this.setState({servicesOpen: true, anchorEl: event.currentTarget});
+    this.setState({popoverOpen: true});
   }
 
   closePopoverMenu = () => {
-    if(!this.props.isDrawerOpen) this.setState({servicesOpen: false});
+    console.log('close menu');
+    if(!this.props.isDrawerOpen) this.setState({popoverOpen: false});
   }
 
-  UNSAFE_componentWillReceiveProps = (nextProps) => { // eslint-disable-line camelcase
-    if(!this.props.isDrawerOpen && nextProps.isDrawerOpen) {
-      this.setState({servicesOpen: true, anchorEl: this.refs.submenuAnchor}); // eslint-disable-line react/no-string-refs
-    } else if(!this.props.isDrawerOpen || !nextProps.isDrawerOpen) {
-      this.setState({servicesOpen: false});
+  componentDidUpdate = (prevProps) => {
+    if(!this.props.isDrawerOpen && prevProps.isDrawerOpen) {
+      this.setState({popoverOpen: true}); // eslint-disable-line react/no-string-refs
+    } else if(this.props.isDrawerOpen !== prevProps.isDrawerOpen && prevProps.isDrawerOpen) {
+      this.setState({popoverOpen: false});
     }
   }
 
@@ -150,13 +154,10 @@ class NavMenu extends React.Component {
 }
 
 Submenu.propTypes = {
-  anchorEl: PropTypes.object,
-  anchorOrigin: PropTypes.object,
   closePopoverMenu: PropTypes.func,
   handleClick: PropTypes.func,
   menuItem: PropTypes.object,
-  servicesOpen: PropTypes.bool,
-  targetOrigin: PropTypes.object
+  popoverOpen: PropTypes.bool,
 };
 
 NavMenu.propTypes = {

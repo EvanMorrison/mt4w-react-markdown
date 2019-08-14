@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import styled from 'react-emotion';
+import { PropTypes } from 'prop-types';
 
-const ItemStyle = styled('div')`
-  height: 2em;
+const ItemStyle = styled('li')`
   width: 100%;
 `;
 
 class MenuItem extends Component {
   render() {
     return(
-      <ItemStyle>
-        {this.props.leftIcon}
-        {this.props.primaryText}
+      <ItemStyle {...this.props}>
+        {this.props.children}
       </ItemStyle>
     );
   }
 }
 
 MenuItem.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object]),
   leftIcon: PropTypes.object,
   primaryText: PropTypes.string
 };

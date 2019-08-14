@@ -1,5 +1,6 @@
 /* stylelint-disable */
 import { injectGlobal } from 'emotion';
+import { rgba } from 'polished';
 
 injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=Roboto:900,700,500,400,300,100');
@@ -28,7 +29,7 @@ injectGlobal`
   }
 
   .active {
-    border-bottom: 1px solid rgba(steelblue, 0.7);
+    border-bottom: 1px solid ${rgba('steelblue', 0.7)};
   }
 
   @font-face {
@@ -51,15 +52,15 @@ injectGlobal`
     text-transform: none;
     line-height: 1;
     font-size: 24px;
-    color: rgba(#000000, 0.87);
+    color: ${rgba('#000000', 0.87)};
     
     /* Enable Ligatures ================ */
     letter-spacing: 0;
-    -webkit-font-feature-settings: "liga";
-    -moz-font-feature-settings: "liga=1";
-    -moz-font-feature-settings: "liga";
-    -ms-font-feature-settings: "liga" 1;
-    font-feature-settings: "liga";
+    -webkit-font-feature-settings: 'liga';
+    -moz-font-feature-settings: 'liga=1';
+    -moz-font-feature-settings: 'liga';
+    -ms-font-feature-settings: 'liga' 1;
+    font-feature-settings: 'liga';
     -webkit-font-variant-ligatures: discretionary-ligatures;
     font-variant-ligatures: discretionary-ligatures;
 

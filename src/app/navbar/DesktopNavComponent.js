@@ -9,9 +9,9 @@ const DesktopNavWrapper = styled(Row)`
   justify-content: flex-end;
   align-items: center;
 
-  * {
-    color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary} !important;
-  }
+  /* * {
+    color: ${props => props.position === 1 ? props.theme.contrastText : props.theme.primary};
+  } */
 
   @media (max-width: 1023px) {
     display: none;
@@ -22,8 +22,7 @@ class DesktopNavComponent extends Component {
   render() {
     return(
       <DesktopNavWrapper position={this.props.position}>
-        <NavMenu position={this.props.position}
-          servicesOpen={false}/>
+        <NavMenu position={this.props.position}/>
       </DesktopNavWrapper>
     );
   }

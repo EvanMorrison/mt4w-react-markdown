@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from 'react';
 import styled from 'react-emotion';
 import { rgba } from 'polished';
@@ -40,7 +41,7 @@ const Footer = () => (
     <div>
       <Column>
         <Row>
-          <span>&copy;2018</span>
+          <span>&copy;{moment().format('YYYY')}</span>
           <span>MT4W, LLC</span>
         </Row>
       </Column>
