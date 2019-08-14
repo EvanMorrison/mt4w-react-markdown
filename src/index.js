@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './app/app';
 import registerServiceWorker from './registerServiceWorker';
 import './manifest.webmanifest';
+import './favicon.ico';
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 

@@ -89,7 +89,7 @@ module.exports = {
           emitWarning: true
         }
       }, {
-        test: /\.(svg|png|gif|jpe?g)$/,
+        test: /\.(ico|svg|png|gif|jpe?g)$/,
         exclude: /node_modules/,
         use: [{
           loader: "file-loader",
