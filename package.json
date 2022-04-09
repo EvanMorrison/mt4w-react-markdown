@@ -31,7 +31,7 @@
     "@rmwc/button": "^3.0.9",
     "@rmwc/textfield": "^3.0.9",
     "emotion-theming": "^10.0.14",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "polished": "^2.3.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
